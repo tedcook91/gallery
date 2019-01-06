@@ -1,0 +1,12 @@
+mixin pictureCard(picture = {})
+    .picture
+        .picture__hero
+            .picture__actions
+                .picture__action.picture__action--edit
+                    a(href=`pictures/${picture._id}/edit`)
+                        != h.icon('pencil')
+            img(src=`/uploads/${picture.photo || 'picture.png'}`)
+            h2.title
+                a(href=`/picture/${picture.slug}`) #{picture.name}
+        .picture__details
+            p= picture.description.split(' ').slice(0, 25).join(' ')

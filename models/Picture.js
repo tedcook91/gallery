@@ -13,7 +13,12 @@ const pictureSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    tags: [String]
+    tags: [String],
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    photo: String
 });
 
 pictureSchema.pre('save', function(next) {

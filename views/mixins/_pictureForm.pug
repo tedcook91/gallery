@@ -1,9 +1,14 @@
 mixin pictureForm(picture = {})
-  form(action="/add" method="POST" class="card")
+  form(action=`/add/${picture._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") Name
     input(type="text" name="name" id="name")
     label(for="description") Description
     textarea(name="description" id="description")
+    //- Image Upload
+    label(for="photo") Photo
+      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+    if picture.photo
+      img(src=`/uploads/${picture.photo}`, alt=picture.name width=200)
     - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Licensed']
     ul.tags
       each choice in choices
