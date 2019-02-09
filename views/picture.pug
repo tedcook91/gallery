@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .single
+        .single__hero
+            img.single__image(src=`/uploads/${picture.photo || 'picture.png'}`)
+            h2.title.title--single
+                a(href=`/picture/${picture.slug}`) #{picture.name}
+
+    .single__deatails.inner
+        p= picture.description
+
+        if picture.tags
+            ul.tags
+                each tag in picture.tags
+                    li.tag
+                        a.tag__link(href=`/tags/${tag}`)
+                            span.tag__text  ##{tag}         

@@ -51,3 +51,14 @@ exports.getPictures = async (req, res) => {
     const pictures = await Picture.find();
     res.render('pictures', { title: 'Pictures', pictures });
 };
+
+exports.editPicture = async (req, res) => {
+    const picture = await Picture.findOne({ _id: req.params.id });
+    res.render('editPicture', { title: `Edit ${picture.name}`, picture })
+};
+
+exports.getPictureBySlug = async (req, res, next) => {
+    const picture = await Picture.findOne({ slug: req.params.slug });
+    if (!picture) return next();
+    res.render('picture', { picture, title: picture.name });
+};

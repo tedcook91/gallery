@@ -16,7 +16,10 @@ router.post('/add/:id',
     catchErrors(pictureController.updateStore)
 );
 
-router.post('/add', pictureController.upload, catchErrors(pictureController.resize), catchErrors(pictureController.createPicture));
+router.post('/add/:id', pictureController.upload, catchErrors(pictureController.resize), catchErrors(pictureController.createPicture));
 
+router.get('/pictures/:id/edit', catchErrors(pictureController.editPicture));
+
+router.get('/picture/:slug', catchErrors(pictureController.getPictureBySlug));
 
 module.exports = router;
