@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pictureController = require('../controllers/pictureController');
+const adminController = require('../controllers/adminController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', catchErrors(pictureController.getPictures));
@@ -24,5 +25,11 @@ router.get('/picture/:slug', catchErrors(pictureController.getPictureBySlug));
 
 router.get('/tags', catchErrors(pictureController.getPicturesByTag));
 router.get('/tags/:tag', catchErrors(pictureController.getPicturesByTag));
+
+router.get('/admin', adminController.loginForm)
+router.get('/register', adminController.registerForm);
+
+// 1. validate registration data 2. register the user 3. log them in
+router.post('/register', adminController.validateRegister);
 
 module.exports = router;
