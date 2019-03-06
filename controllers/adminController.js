@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Admin = mongoose.model('Admin');
+const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
   res.render('login', { title: 'Login' });
@@ -28,4 +30,11 @@ exports.validateRegister = (req, res, next) => {
     return; // stop the fn from running
   }
   next(); // there were no errors!
+};
+
+exports.register = async (req, res, next) => {
+  const admin = new Admin({ email: req.body.email, name: req.body.name });
+  const register = promisify(Admin.register, Admin);
+  await register(admin, req.body.password);
+  next(); //pass to authcontroller.login
 };
