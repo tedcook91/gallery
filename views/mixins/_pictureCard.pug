@@ -1,10 +1,16 @@
 mixin pictureCard(picture = {})
-  .picture
-    .picture__hero
-      .picture__actions
-        .picture__action.picture__action--edit
-          a(href=`/pictures/${picture._id}/edit`)
-            != h.icon('pencil')
+  if user
+    .adminpicture
+      .adminpicture__hero
+        .adminpicture__actions
+          .adminpicture__action.adminpicture__action--edit
+            a(href=`/pictures/${picture._id}/edit`)
+              != h.icon('pencil')
+  else
+    .picture
+      .picture__hero
+        .picture__actions
+          .picture__action.picture__action--edit
       img(src=`/uploads/${picture.photo || 'picture.png'}`)
       h2.title
         a(href=`/picture/${picture.slug}`) #{picture.name}
