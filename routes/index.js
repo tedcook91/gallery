@@ -7,7 +7,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', catchErrors(pictureController.getPictures));
 router.get('/pictures', catchErrors(pictureController.getPictures));
-router.get('/add', pictureController.addPicture);
+router.get('/add', authController.isLoggedIn, pictureController.addPicture);
 
 router.post('/add',
     pictureController.upload,
@@ -28,9 +28,16 @@ router.get('/tags', catchErrors(pictureController.getPicturesByTag));
 router.get('/tags/:tag', catchErrors(pictureController.getPicturesByTag));
 
 router.get('/admin', adminController.loginForm)
+router.post('/login', authController.login)
 router.get('/register', adminController.registerForm);
 
 // 1. validate registration data 2. register the user 3. log them in
 router.post('/register', adminController.validateRegister, adminController.register, authController.login);
+
+router.get('/logout', authController.logout);
+
+router.post('/forgot', catchErrors(authController.forgot));
+router.get('/reset/:token', catchErrors(authController.reset));
+router.post('/reset/:token', authController.confirmedPasswords, catchErrors(authController.update));
 
 module.exports = router;
