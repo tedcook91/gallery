@@ -5,12 +5,6 @@ html {
 body {
   background: #262161;
   background: #efefef; }
-  body:before {
-    content: '';
-    display: block;
-    background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
-    height: 10px;
-    width: 100%; }
 
 .inner {
   max-width: 900px;
@@ -1088,13 +1082,13 @@ pre.error {
 
 .adminpicture {
   background: white;
-  margin: 1.25em 0 0 1.25em;
+  margin: .5em;
   width: calc(33.3333% - 1.25em);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
   .adminpicture--wide {
     width: 100%; }
   .adminpicture__details {
-    padding: 2rem; }
+    padding: 1rem; }
     .adminpicture__details p {
       line-height: 1.2;
       margin-bottom: 0; }
@@ -1110,9 +1104,9 @@ pre.error {
   z-index: 2;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2);
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 90px;
   display: -ms-flexbox;
   display: flex;
   color: white;
@@ -1148,8 +1142,6 @@ pre.error {
     right: 0;
     position: absolute;
     left: 0;
-    object-fit: cover;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+    object-fit: cover; }
 
 /*# sourceMappingURL=style.css.map*/
