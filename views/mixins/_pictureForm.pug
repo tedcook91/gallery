@@ -9,7 +9,7 @@ mixin pictureForm(picture = {})
       input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
     if picture.photo
       img(src=`/uploads/${picture.photo}`, alt=picture.name width=200)
-    - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Licensed']
+    - const choices = ['Cityscape', 'Water', 'Boats', 'People', 'Summer', 'Winter']
     ul.tags
       each choice in choices
         .tag.tag__choice

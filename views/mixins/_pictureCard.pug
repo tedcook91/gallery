@@ -6,6 +6,10 @@ mixin pictureCard(picture = {})
           .adminpicture__action.adminpicture__action--edit
             a(href=`/pictures/${picture._id}/edit`)
               != h.icon('pencil')
+        img(src=`uploads/${picture.photo || 'picture.png'}`)
+        h2.title
+      .picture__details
+        p= picture.description.split(' ').slice(0, 25).join(' ')
   else
     .picture
       .picture__hero

@@ -22,14 +22,16 @@ html
             li.nav__item: a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
                   !=h.icon('add')
           .nav__section.nav__section--search
-            .search
-              input.search__input(type="text" placeholder="Coffee, beer..." name="search")
-              .search__results
+            //- .search
+            //-   input.search__input(type="text" placeholder="Coffee, beer..." name="search")
+            //-   .search__results
           .nav__section.nav__section--user
             if user
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
                 != h.icon('logout')
-                span Logout   
+                span Logout
+    
+    block footer
 
     block messages
       if locals.flashes
@@ -46,3 +48,5 @@ html
 
     block scripts
       script(src="/dist/App.bundle.js")
+
+      p <div>Icons made by <a href="https://www.flaticon.com/<?=_('authors').'/'?>freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
